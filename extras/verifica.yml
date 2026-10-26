@@ -1,0 +1,22 @@
+name: verifica
+on: [push, pull_request]
+jobs:
+  sintaxe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: bash
+        run: bash -n remove_pbc.sh
+      - name: shellcheck
+        run: shellcheck -S error remove_pbc.sh
+      - name: python
+        run: python -m py_compile lib/*.py
+      - name: ajuda
+        run: |
+          mkdir -p bin && printf '#!/bin/sh\nexit 0\n' > bin/gmx && chmod +x bin/gmx
+          PATH=$PWD/bin:$PATH ./remove_pbc.sh --help
+          PATH=$PWD/bin:$PATH ./remove_pbc.sh --version

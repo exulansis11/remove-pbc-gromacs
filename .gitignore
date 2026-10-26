@@ -1,0 +1,13 @@
+# trajetorias e saidas (nao versionar dados)
+*.xtc
+*.trr
+*.tpr
+*.gro
+*.pdb
+*.edr
+*.csv
+*.ndx
+\#*\#
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

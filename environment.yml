@@ -1,0 +1,10 @@
+name: remove-pbc
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - gromacs
+  - mdanalysis>=2.4
+  - numpy
+  - pandas
+  - pymol-open-source   # opcional: checagem do PDB como o PyMOL le
